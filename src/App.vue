@@ -1,35 +1,29 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 import Step from './components/Step.vue'
 
 let stepId = 0 // ID for each step in the rosary
 
-export default {
-  components: {
-    Step
-  },
-  data() {
-    return {
-      message: 'Welcome!',
-      titleClass: 'title',
-      hideCompleted: false,
-      steps: [
-        { id: stepId++, text: 'OurFather', done: false },
-        { id: stepId++, text: 'Hail Mary', done: false },
-        { id: stepId++, text: 'Glory', done: false }
-      ]
-    }
-  },
-  computed: {
-    filteredSteps() {
-      // If we hide completed, filter the list away where not done
-      return this.hideCompleted ? this.steps.filter((t) => !t.done) : this.steps
-    }
-  },
-  methods: {
-    resetSteps() {
-      this.steps.forEach((e) => (e.done = false))
-    }
-  }
+const message = ref('Welcome')
+const titleClass = ref('title')
+const hideCompleted = ref(false)
+const steps = ref([
+  { id: stepId++, text: 'OurFather', done: false },
+  { id: stepId++, text: 'Hail Mary', done: true },
+  { id: stepId++, text: 'Glory', done: false }
+])
+
+const filteredSteps = computed(() => {
+  return hideCompleted.value ? steps.value.filter((t) => !t.done) : steps.value
+  // return hideCompleted ? steps.filter((t) => !t.done) : steps.value
+})
+
+function resetSteps() {
+  steps.value.forEach((e) => (e.done = false))
+}
+
+function toggleHideCompleted() {
+  hideCompleted.value = !hideCompleted.value
 }
 </script>
 
@@ -38,15 +32,20 @@ export default {
   <br />
 
   <ul>
+    <!-- <li class="no-bullets" v-for="step in filteredSteps" :step="step" :key="step.id">
+    <input type="checkbox" v-model="step.done" />&nbsp;
+    <label :class="{ done: step.done }" >{{ step.text }}</label>
+    </li> -->
     <Step v-for="step in filteredSteps" :step="step" :key="step.id"></Step>
   </ul>
 
   <br />
-  <button @click="hideCompleted = !hideCompleted">
+  <button @click="toggleHideCompleted">
     {{ hideCompleted ? 'Show all' : 'Hide completed' }}
   </button>
   <br />
-  <button @click="resetSteps">Reset steps</button>
+  <button @click="resetSteps()">Reset steps</button>
+  <br />
 </template>
 
 <style>
