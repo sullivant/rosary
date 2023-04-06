@@ -3,6 +3,11 @@ import { ref, computed } from 'vue'
 import { version } from '../package.json'
 import Step from './components/Step.vue'
 
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark({selector: "body"})
+const toggleDark = useToggle(isDark);
+
 let stepId = 0 // ID for each step in the rosary
 
 const hideCompleted = ref(false)
@@ -41,17 +46,17 @@ function toggleHideCompleted() {
   <br />
   <button @click="resetSteps()">Reset steps</button>
   <br />
+  <button @click="toggleDark()">
+    {{ isDark ? 'dark' : 'light' }}
+  </button>
 </template>
 
 <style>
-.title {
-  color: cadetblue;
-}
 .logo {
   position: fixed;
   top: 20px;
   left: 20px;
-  color: #000;
+  /* color: #000; */
   display: flex;
   place-items: center;
 }
@@ -60,7 +65,7 @@ function toggleHideCompleted() {
   bottom: 20px;
   left: 20px;
   font-size: xx-small;
-  color: #000;
+  /* color: #000; */
   display: flex;
   place-items: center;
 }

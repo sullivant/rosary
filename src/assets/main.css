@@ -8,6 +8,10 @@
   padding: 0 2rem;
 }
 
+.dark {
+  background: #16171d; 
+  color: #ffffffe4;
+}
 
 body {
   display: flex;
@@ -21,14 +25,14 @@ body {
   font-family: IBM Plex Mono, monospace;
 }
 
-
 button {
   background: none;
   border: none;
   border: 1px solid rgba(209, 21, 21, 0.3);
   background-color: #fff;
-  padding: 15px 25px;
+  padding: 10px 10px;
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  margin: 1px;
 }
