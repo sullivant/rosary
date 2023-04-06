@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import {version} from '../package.json'
 import Step from './components/Step.vue'
 
 let stepId = 0 // ID for each step in the rosary
@@ -41,10 +42,14 @@ function toggleHideCompleted() {
   <br />
   <button @click="resetSteps()">Reset steps</button>
   <br />
+  <span class="appVersion">{{ version }}</span>
 </template>
 
 <style>
 .title {
   color: cadetblue;
+}
+.appVersion {
+  font-size: xx-small;
 }
 </style>
