@@ -15,7 +15,6 @@ const steps = ref([
 
 const filteredSteps = computed(() => {
   return hideCompleted.value ? steps.value.filter((t) => !t.done) : steps.value
-  // return hideCompleted ? steps.filter((t) => !t.done) : steps.value
 })
 
 function resetSteps() {
@@ -32,10 +31,6 @@ function toggleHideCompleted() {
   <br />
 
   <ul>
-    <!-- <li class="no-bullets" v-for="step in filteredSteps" :step="step" :key="step.id">
-    <input type="checkbox" v-model="step.done" />&nbsp;
-    <label :class="{ done: step.done }" >{{ step.text }}</label>
-    </li> -->
     <Step v-for="step in filteredSteps" :step="step" :key="step.id"></Step>
   </ul>
 
@@ -51,11 +46,5 @@ function toggleHideCompleted() {
 <style>
 .title {
   color: cadetblue;
-}
-.done {
-  text-decoration: line-through;
-}
-.no-bullets {
-  list-style-type: none;
 }
 </style>
