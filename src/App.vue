@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import {version} from '../package.json'
+import { version } from '../package.json'
 import Step from './components/Step.vue'
 
 let stepId = 0 // ID for each step in the rosary
 
-const message = ref('Welcome')
-const titleClass = ref('title')
 const hideCompleted = ref(false)
 const steps = ref([
-  { id: stepId++, text: 'OurFather', done: false },
-  { id: stepId++, text: 'Hail Mary', done: true },
-  { id: stepId++, text: 'Glory', done: false }
+  { id: stepId++, text: 'First', done: false },
+  { id: stepId++, text: 'Second', done: true },
+  { id: stepId++, text: 'Third', done: false }
 ])
 
 const filteredSteps = computed(() => {
@@ -28,7 +26,8 @@ function toggleHideCompleted() {
 </script>
 
 <template>
-  <h1 :class="titleClass">{{ message }}</h1>
+  <div class="logo">Welcome!</div>
+  <span class="appVersion">{{ version }}</span>
   <br />
 
   <ul>
@@ -42,14 +41,27 @@ function toggleHideCompleted() {
   <br />
   <button @click="resetSteps()">Reset steps</button>
   <br />
-  <span class="appVersion">{{ version }}</span>
 </template>
 
 <style>
 .title {
   color: cadetblue;
 }
+.logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: #000;
+  display: flex;
+  place-items: center;
+}
 .appVersion {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   font-size: xx-small;
+  color: #000;
+  display: flex;
+  place-items: center;
 }
 </style>

@@ -5,7 +5,7 @@ const props = defineProps(['step'])
 <template>
   <li class="no-bullets">
     <input type="checkbox" v-model="step.done" :id="step.id" />&nbsp;
-    <label :class="{ done: step.done }" :for="step.id">{{ step.text }}</label>
+    <label class="step" :class="{ done: step.done }" :for="step.id">{{ step.text }}</label>
   </li>
 </template>
 
@@ -16,4 +16,10 @@ const props = defineProps(['step'])
 .no-bullets {
   list-style-type: none;
 }
+
+/* This will eventually be a 'card' */
+/* .step {
+  margin: 50px 0;
+  font-size: 15px;
+} */
 </style>
