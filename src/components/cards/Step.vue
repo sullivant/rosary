@@ -27,13 +27,4 @@ const props = defineProps(['step'])
 .done {
   text-decoration: line-through;
 }
-.no-bullets {
-  list-style-type: none;
-}
-
-/* This will eventually be a 'card' */
-/* .step {
-  margin: 50px 0;
-  font-size: 15px;
-} */
 </style>
