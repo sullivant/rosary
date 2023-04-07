@@ -2,12 +2,12 @@
 import { ref, computed } from 'vue'
 import { version } from '../package.json'
 
-import Step from '@/components/Step.vue'
-import AppFooter from '@/components/AppFooter.vue'
-import AppHeader from '@/components/AppHeader.vue'
-
 // Dark mode toggling support
 import { useDark, useToggle } from '@vueuse/core'
+
+import AppFooter from '@/components/AppFooter.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import CardStack from '@/components/cards/CardStack.vue'
 
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
@@ -37,9 +37,9 @@ function toggleHideCompleted() {
 <template>
   <AppHeader @mode-change="toggleDark()" :isDark="isDark" />
 
-  <ul>
-    <Step v-for="step in filteredSteps" :step="step" :key="step.id"></Step>
-  </ul>
+  <CardStack :steps="filteredSteps" />
+
+  <br />
 
   <div class="controlButtons">
     <button @click="toggleHideCompleted">

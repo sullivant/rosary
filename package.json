@@ -12,6 +12,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@coreui/coreui": "^4.2.6",
+    "@coreui/vue": "^4.8.0",
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.13.0",
     "@vueuse/shared": "^9.13.0",
