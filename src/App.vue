@@ -40,7 +40,6 @@ function toggleHideCompleted() {
   <ul>
     <Step v-for="step in filteredSteps" :step="step" :key="step.id"></Step>
   </ul>
-  <br />
 
   <div class="controlButtons">
     <button @click="toggleHideCompleted">
