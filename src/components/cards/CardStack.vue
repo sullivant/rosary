@@ -5,7 +5,5 @@ const props = defineProps(['steps'])
 </script>
 
 <template>
-
-    <Step v-for="step in steps" :step="step" :key="step.id"></Step>
-
+  <Step v-for="step in steps" :step="step" :key="step.id"></Step>
 </template>

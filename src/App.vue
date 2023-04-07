@@ -16,9 +16,9 @@ let stepId = 0 // ID for each step in the rosary
 
 const hideCompleted = ref(false)
 const steps = ref([
-  { id: stepId++, text: 'First', done: false },
-  { id: stepId++, text: 'Second', done: true },
-  { id: stepId++, text: 'Third', done: false }
+  { id: stepId++, title: 'Step 1', text: 'First', done: false },
+  { id: stepId++, title: 'Step 2', text: 'Second', done: true },
+  { id: stepId++, title: 'Step 3', text: 'Third', done: false }
 ])
 
 const filteredSteps = computed(() => {
