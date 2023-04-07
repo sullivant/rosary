@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { version } from '../package.json'
-import Step from './components/Step.vue'
 
+import Step from '@/components/Step.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import AppHeader from '@/components/AppHeader.vue'
+
+// Dark mode toggling support
 import { useDark, useToggle } from '@vueuse/core'
 
-const isDark = useDark({selector: "body"})
-const toggleDark = useToggle(isDark);
+const isDark = useDark({ selector: 'body' })
+const toggleDark = useToggle(isDark)
 
 let stepId = 0 // ID for each step in the rosary
 
@@ -31,8 +35,8 @@ function toggleHideCompleted() {
 </script>
 
 <template>
-  <div class="logo">Welcome!</div>
-  <span class="appVersion">{{ version }}</span>
+  <AppHeader @mode-change="toggleDark()" :isDark="isDark" />
+
   <br />
 
   <ul>
@@ -46,27 +50,8 @@ function toggleHideCompleted() {
   <br />
   <button @click="resetSteps()">Reset steps</button>
   <br />
-  <button @click="toggleDark()">
-    {{ isDark ? 'dark' : 'light' }}
-  </button>
+
+  <AppFooter :version="version" />
 </template>
 
-<style>
-.logo {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  /* color: #000; */
-  display: flex;
-  place-items: center;
-}
-.appVersion {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-size: xx-small;
-  /* color: #000; */
-  display: flex;
-  place-items: center;
-}
-</style>
+<style></style>
