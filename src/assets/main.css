@@ -4,6 +4,7 @@
   padding: 2rem;
   font-weight: normal;
   display: grid;
+  grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
   padding: 0 2rem;
 }
@@ -28,11 +29,11 @@ body {
 button {
   background: none;
   border: none;
-  border: 1px solid rgba(209, 21, 21, 0.3);
+  border: 1px solid rgba(136, 154, 138, 0.3);
   background-color: #fff;
-  padding: 10px 10px;
+  padding: 5px 5px;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: xx-small;
   margin: 1px;
 }

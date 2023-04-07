@@ -37,21 +37,24 @@ function toggleHideCompleted() {
 <template>
   <AppHeader @mode-change="toggleDark()" :isDark="isDark" />
 
-  <br />
-
   <ul>
     <Step v-for="step in filteredSteps" :step="step" :key="step.id"></Step>
   </ul>
+  <br />
 
-  <br />
-  <button @click="toggleHideCompleted">
-    {{ hideCompleted ? 'Show all' : 'Hide completed' }}
-  </button>
-  <br />
-  <button @click="resetSteps()">Reset steps</button>
-  <br />
+  <div class="controlButtons">
+    <button @click="toggleHideCompleted">
+      <span v-if="hideCompleted"><v-icon name="px-checkbox-on" /></span>
+      <span v-else><v-icon name="px-checkbox" /></span>
+    </button>
+    <button @click="resetSteps()"><v-icon name="io-arrow-undo-circle-outline" /></button>
+  </div>
 
   <AppFooter :version="version" />
 </template>
 
-<style></style>
+<style>
+.controlButtons {
+  text-align: center;
+}
+</style>

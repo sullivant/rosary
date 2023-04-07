@@ -5,9 +5,16 @@ import './assets/main.css'
 
 // Icon imports
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { OiSun, OiMoon } from 'oh-vue-icons/icons'
-
-addIcons(OiSun, OiMoon)
+import { 
+    OiSun, OiMoon, 
+    IoArrowUndoCircleOutline,
+    PxCheckbox, PxCheckboxOn 
+} from 'oh-vue-icons/icons'
+addIcons(
+    OiSun, OiMoon, 
+    IoArrowUndoCircleOutline, 
+    PxCheckbox, PxCheckboxOn
+);
 
 const app = createApp(App)
 app.component('v-icon', OhVueIcon)
