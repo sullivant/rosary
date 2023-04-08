@@ -12,13 +12,13 @@ const vars = computed((isDark) => {
 </script>
 
 <template>
-  <CCard class="mb-4" style="width: 100%" :color="vars">
+  <!-- <h3>{{  step.title }}</h3>
+  <p> {{  step.text }}</p> -->
+  <CCard class="h-100 d-inline-block w-100" :color="vars">
     <CCardHeader> {{ step.title }}</CCardHeader>
     <CRow>
       <CCardBody>
         <CCardText>
-          <!-- <input type="checkbox" v-model="step.done" :id="step.id" />&nbsp; -->
-          <!-- <label class="step" :class="{ done: step.done }" :for="step.id">{{ step.text }}</label> -->
           <span class="prayer" :class="{ done: step.done }" :for="step.id">{{ step.text }}</span>
         </CCardText>
       </CCardBody>
@@ -32,6 +32,6 @@ const vars = computed((isDark) => {
 }
 
 .prayer {
-  font-size: xx-small
+  font-size: x-small;
 }
 </style>

@@ -1,18 +1,27 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import Step from '@/components/cards/Step.vue'
 
 // Swiper cards
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { EffectCards } from 'swiper'
+import { useSwiper, Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCards, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
+import 'swiper/css/scrollbar'
 
 const props = defineProps(['steps', 'isDark'])
-const modules = [EffectCards]
+const modules = [EffectCards, Scrollbar]
 </script>
 
 <template>
-  <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="swiper">
+  <swiper
+    :rewind="true"
+    :effect="'cards'"
+    :grabCursor="true"
+    :modules="modules"
+    :scrollbar="{ hide: true }"
+    class="swiper"
+  >
     <swiper-slide v-for="step in steps" @click="step.done = !step.done">
       <Step :step="step" :key="step.id" :isDark="isDark"></Step>
     </swiper-slide>

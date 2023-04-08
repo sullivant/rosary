@@ -29,6 +29,11 @@ function resetSteps() {
   steps.value.forEach((e) => (e.done = false))
 }
 
+function resetStack() {
+  const swiper = document.querySelector('cardstack')
+  console.log(swiper)
+}
+
 function toggleHideCompleted() {
   hideCompleted.value = !hideCompleted.value
 }
@@ -46,6 +51,8 @@ function toggleHideCompleted() {
   <CardStack :steps="filteredSteps" :isDark="isDark" />
 
   <br />
+
+  <button @click="resetStack">reset stack</button>
 
   <AppFooter :version="version" />
 </template>
