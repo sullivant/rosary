@@ -1,9 +1,37 @@
 <script setup lang="ts">
 import Step from '@/components/cards/Step.vue'
 
-const props = defineProps(['steps'])
+// Swiper cards
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCards } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
+const props = defineProps(['steps', 'isDark'])
+const modules = [EffectCards]
 </script>
 
 <template>
-  <Step v-for="step in steps" :step="step" :key="step.id"></Step>
+  <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+    <swiper-slide v-for="step in steps" @click="step.done = !step.done">
+      <Step :step="step" :key="step.id" :isDark="isDark"></Step>
+    </swiper-slide>
+  </swiper>
 </template>
+
+<style>
+.swiper {
+  width: 240px;
+  height: 320px;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  /* font-size: 22px; */
+  font-weight: normal;
+  /* color: #fff; */
+  background-color: rgb(69, 69, 79);
+}
+</style>

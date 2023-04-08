@@ -1,14 +1,26 @@
 <script setup lang="ts">
-const props = defineProps(['isDark'])
+const props = defineProps(['isDark', 'hideCompleted'])
 </script>
 
 <template>
   <div class="appHeader">
     <span class="appLogo">Welcome!</span>
-    <div class="modeSelectArea">
-      <button class="modeSelectButton" @click="$emit('mode-change')">
+    <div class="controlSelectArea">
+      <button class="controlSelectButton" @click="$emit('mode-change')">
         <span v-if="isDark"><v-icon name="oi-sun" /></span>
         <span v-else><v-icon name="oi-moon" /></span>
+      </button>
+    </div>
+
+    <div class="controlSelectArea">
+      <button class="controlSelectButton" @click="$emit('hide-completed')">
+        <span v-if="hideCompleted"><v-icon name="px-checkbox-on" /></span>
+        <span v-else><v-icon name="px-checkbox" /></span>
+      </button>
+    </div>
+    <div class="controlSelectArea">
+      <button class="controlSelectButton" @click="$emit('reset-steps')">
+        <v-icon name="io-arrow-undo-circle-outline" />
       </button>
     </div>
   </div>
@@ -27,16 +39,16 @@ const props = defineProps(['isDark'])
   display: flex;
   place-items: center;
 }
-.modeSelectArea {
+.controlSelectArea {
   background: none;
   border: none;
   border: 1px solid rgba(138, 133, 133, 0.3);
-  padding: 5px 5px;
+  padding: 3px 5px;
   border-radius: 50px;
   font-size: xx-small;
   margin: 1px;
 }
-.modeSelectButton {
+.controlSelectButton {
   background: none;
   border: none;
   background-color: #fff;

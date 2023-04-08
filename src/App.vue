@@ -9,11 +9,9 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CardStack from '@/components/cards/CardStack.vue'
 
+let stepId = 0 // ID for each step in the rosary
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
-
-let stepId = 0 // ID for each step in the rosary
-
 const hideCompleted = ref(false)
 const steps = ref([
   { id: stepId++, title: 'Step 1', text: 'First', done: false },
@@ -35,25 +33,19 @@ function toggleHideCompleted() {
 </script>
 
 <template>
-  <AppHeader @mode-change="toggleDark()" :isDark="isDark" />
+  <AppHeader
+    @reset-steps="resetSteps"
+    @hide-completed="toggleHideCompleted"
+    @mode-change="toggleDark()"
+    :isDark="isDark"
+    :hideCompleted="hideCompleted"
+  />
 
-  <CardStack :steps="filteredSteps" />
+  <CardStack :steps="filteredSteps" :isDark="isDark" />
 
   <br />
-
-  <div class="controlButtons">
-    <button @click="toggleHideCompleted">
-      <span v-if="hideCompleted"><v-icon name="px-checkbox-on" /></span>
-      <span v-else><v-icon name="px-checkbox" /></span>
-    </button>
-    <button @click="resetSteps()"><v-icon name="io-arrow-undo-circle-outline" /></button>
-  </div>
 
   <AppFooter :version="version" />
 </template>
 
-<style>
-.controlButtons {
-  text-align: center;
-}
-</style>
+<style></style>
