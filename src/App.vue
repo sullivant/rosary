@@ -9,12 +9,14 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CardStack from '@/components/cards/CardStack.vue'
 
+import { ourfather } from '@/assets/content/prayers.json'
+
 let stepId = 0 // ID for each step in the rosary
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
 const steps = ref([
-  { id: stepId++, title: 'Step 1', text: 'First', done: false },
+  { id: stepId++, title: ourfather.title, text: ourfather.content, done: false },
   { id: stepId++, title: 'Step 2', text: 'Second', done: true },
   { id: stepId++, title: 'Step 3', text: 'Third', done: false }
 ])

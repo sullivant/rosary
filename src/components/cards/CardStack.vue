@@ -12,7 +12,7 @@ const modules = [EffectCards]
 </script>
 
 <template>
-  <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
+  <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="swiper">
     <swiper-slide v-for="step in steps" @click="step.done = !step.done">
       <Step :step="step" :key="step.id" :isDark="isDark"></Step>
     </swiper-slide>
@@ -22,7 +22,7 @@ const modules = [EffectCards]
 <style>
 .swiper {
   width: 240px;
-  height: 320px;
+  height: 420px;
 }
 .swiper-slide {
   display: flex;
