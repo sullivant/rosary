@@ -1,6 +1,18 @@
 {
+  "creed": {
+    "title": "Apostles' Creed",
+    "text": "I believe in God,\nthe Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,was crucified, died and was buried;\nhe descended into hell;\non the third day he rose again from the dead;he ascended into heaven,\nand is seated at the right hand of God the Father almighty;\nfrom there he will come to judge the living and the dead.\n\nI believe in the Holy Spirit,\nthe holy catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting.\n\nAmen."
+  },
   "ourfather": {
     "title": "Our Father",
-    "content": "Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen. Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen. Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen."
+    "text": "Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen."
+  },
+  "hailmary": {
+    "title": "Hail Mary",
+    "text" : "Hail, Mary, full of grace,the Lord is with thee. Blessed art thou amongst women and blessed is the fruit of thy womb, Jesus.Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
+  },
+  "glory": {
+    "title": "Glory",
+    "text": "Glory be to the Father, the Son, and the Holy Spirit;as it was in the beginning, is now, and ever shall be,world without end. Amen."
   }
 }

@@ -9,16 +9,19 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CardStack from '@/components/cards/CardStack.vue'
 
-import { ourfather } from '@/assets/content/prayers.json'
+import { creed, ourfather, hailmary, glory } from '@/assets/content/prayers.json'
 
 let stepId = 0 // ID for each step in the rosary
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
 const steps = ref([
-  { id: stepId++, title: ourfather.title, text: ourfather.content, done: false },
-  { id: stepId++, title: 'Step 2', text: 'Second', done: true },
-  { id: stepId++, title: 'Step 3', text: 'Third', done: false }
+  { id: stepId++, done: false, prayer: creed, icon: "la-cross-solid"},
+  { id: stepId++, done: false, prayer: ourfather },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: glory },
 ])
 
 const filteredSteps = computed(() => {
@@ -51,8 +54,6 @@ function toggleHideCompleted() {
   <CardStack :steps="filteredSteps" :isDark="isDark" />
 
   <br />
-
-  <button @click="resetStack">reset stack</button>
 
   <AppFooter :version="version" />
 </template>

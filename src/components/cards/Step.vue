@@ -9,17 +9,21 @@ const props = defineProps(['step', 'isDark'])
 const vars = computed((isDark) => {
   return props.isDark ? 'dark' : 'light'
 })
+
+function stepIcon(step: any) {
+  return step.icon;
+}
+
 </script>
 
 <template>
-  <!-- <h3>{{  step.title }}</h3>
-  <p> {{  step.text }}</p> -->
+  <!-- LaCrossSolid -->
   <CCard class="h-100 d-inline-block w-100" :color="vars">
-    <CCardHeader> {{ step.title }}</CCardHeader>
+    <CCardHeader><v-icon v-if="step.icon" :name="stepIcon(step)" /> {{ step.prayer.title }}</CCardHeader>
     <CRow>
       <CCardBody>
         <CCardText>
-          <span class="prayer" :class="{ done: step.done }" :for="step.id">{{ step.text }}</span>
+          <span class="prayer" :class="{ done: step.done }" :for="step.id">{{ step.prayer.text }}</span>
         </CCardText>
       </CCardBody>
     </CRow>
@@ -32,6 +36,6 @@ const vars = computed((isDark) => {
 }
 
 .prayer {
-  font-size: x-small;
+  font-size: small;
 }
 </style>
