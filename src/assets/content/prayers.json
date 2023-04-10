@@ -1,4 +1,8 @@
 {
+  "introduction": {
+    "title": "Introduction",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
   "creed": {
     "title": "Apostles' Creed",
     "text": "I believe in God,\nthe Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,was crucified, died and was buried;\nhe descended into hell;\non the third day he rose again from the dead;he ascended into heaven,\nand is seated at the right hand of God the Father almighty;\nfrom there he will come to judge the living and the dead.\n\nI believe in the Holy Spirit,\nthe holy catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting.\n\nAmen."
@@ -9,10 +13,14 @@
   },
   "hailmary": {
     "title": "Hail Mary",
-    "text" : "Hail, Mary, full of grace,the Lord is with thee. Blessed art thou amongst women and blessed is the fruit of thy womb, Jesus.Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
+    "text": "Hail, Mary, full of grace,the Lord is with thee. Blessed art thou amongst women and blessed is the fruit of thy womb, Jesus.Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
   },
   "glory": {
     "title": "Glory",
     "text": "Glory be to the Father, the Son, and the Holy Spirit;as it was in the beginning, is now, and ever shall be,world without end. Amen."
+  },
+  "fatima": {
+    "title": "Fatima",
+    "text": "O my Jesus, forgive us our sins, save us from the fires of hell. Lead all souls to Heaven, especially those in most need of thy mercy"
   }
 }

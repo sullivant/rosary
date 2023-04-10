@@ -9,19 +9,48 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CardStack from '@/components/cards/CardStack.vue'
 
-import { creed, ourfather, hailmary, glory } from '@/assets/content/prayers.json'
+import {
+  fatima,
+  creed,
+  ourfather,
+  hailmary,
+  glory,
+  introduction
+} from '@/assets/content/prayers.json'
 
 let stepId = 0 // ID for each step in the rosary
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
+
+//TODO: Replace this with a function...
 const steps = ref([
-  { id: stepId++, done: false, prayer: creed, icon: "la-cross-solid"},
+  { id: stepId++, done: false, prayer: introduction },
+  { id: stepId++, done: false, prayer: creed, icon: 'la-cross-solid' },
   { id: stepId++, done: false, prayer: ourfather },
   { id: stepId++, done: false, prayer: hailmary },
   { id: stepId++, done: false, prayer: hailmary },
   { id: stepId++, done: false, prayer: hailmary },
   { id: stepId++, done: false, prayer: glory },
+  {
+    id: stepId++,
+    done: false,
+    prayer: { title: 'First Decade', text: '(Mystery here)' },
+    cardColor: 'info'
+  },
+  { id: stepId++, done: false, prayer: ourfather },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: hailmary },
+  { id: stepId++, done: false, prayer: glory },
+  { id: stepId++, done: false, prayer: fatima }
 ])
 
 const filteredSteps = computed(() => {
