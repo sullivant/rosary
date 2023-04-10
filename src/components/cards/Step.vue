@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 // Cards
-import { CCard, CCardBody, CCardText, CCardImage, CCardHeader, CRow, CCol } from '@coreui/vue'
-import '@coreui/coreui/dist/css/coreui.min.css'
+import { CCard, CCardBody, CCardText, CCardHeader, CRow } from '@coreui/vue'
 
 const props = defineProps(['step', 'isDark'])
 

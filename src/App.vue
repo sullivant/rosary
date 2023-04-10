@@ -5,6 +5,8 @@ import { version } from '../package.json'
 // Dark mode toggling support
 import { useDark, useToggle } from '@vueuse/core'
 
+import '@coreui/coreui/dist/css/coreui.min.css'
+
 import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import CardStack from '@/components/cards/CardStack.vue'
@@ -19,6 +21,7 @@ import {
 } from '@/assets/content/prayers.json'
 
 let stepId = 0 // ID for each step in the rosary
+
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
@@ -61,11 +64,6 @@ function resetSteps() {
   steps.value.forEach((e) => (e.done = false))
 }
 
-function resetStack() {
-  const swiper = document.querySelector('cardstack')
-  console.log(swiper)
-}
-
 function toggleHideCompleted() {
   hideCompleted.value = !hideCompleted.value
 }
@@ -87,4 +85,13 @@ function toggleHideCompleted() {
   <AppFooter :version="version" />
 </template>
 
-<style></style>
+<style>
+.appHeader {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  /* color: #000; */
+  display: flex;
+  place-items: center;
+}
+</style>

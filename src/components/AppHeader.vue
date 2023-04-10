@@ -1,29 +1,55 @@
 <script setup lang="ts">
+// Navigation tabs
+import {
+  CNav,
+  CNavItem,
+  CNavLink,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CDropdown
+} from '@coreui/vue'
+
+defineEmits(['mode-change', 'hide-completed', 'reset-steps'])
 const props = defineProps(['isDark', 'hideCompleted'])
 </script>
 
 <template>
-  <div class="appHeader">
-    <span class="appLogo">Welcome!</span>
-    <div class="controlSelectArea">
-      <button class="controlSelectButton" @click="$emit('mode-change')">
-        <span v-if="isDark"><v-icon name="oi-sun" /></span>
-        <span v-else><v-icon name="oi-moon" /></span>
-      </button>
-    </div>
-
-    <div class="controlSelectArea">
-      <button class="controlSelectButton" @click="$emit('hide-completed')">
-        <span v-if="hideCompleted"><v-icon name="px-checkbox-on" /></span>
-        <span v-else><v-icon name="px-checkbox" /></span>
-      </button>
-    </div>
-    <div class="controlSelectArea">
-      <button class="controlSelectButton" @click="$emit('reset-steps')">
-        <v-icon name="io-arrow-undo-circle-outline" />
-      </button>
-    </div>
-  </div>
+  <CNav class="appHeader">
+    <CNavItem>
+      <CNavLink href="#" active>Welcome!</CNavLink>
+    </CNavItem>
+    <CDropdown variant="nav-item">
+      <CDropdownToggle color="secondary">Setup</CDropdownToggle>
+      <CDropdownMenu>
+        <CDropdownItem href="#">
+          <span v-if="isDark" @click="$emit('mode-change')">Light Mode</span>
+          <span v-else @click="$emit('mode-change')">Dark Mode</span>
+          <button class="controlSelectButton" @click="$emit('mode-change')">
+            <span v-if="isDark"><v-icon name="oi-sun" /></span>
+            <span v-else><v-icon name="oi-moon" /></span>
+          </button>
+        </CDropdownItem>
+        <CDropdownItem href="#">
+          <span v-if="hideCompleted" @click="$emit('hide-completed')">Show completed</span>
+          <span v-else @click="$emit('hide-completed')">Hide Completed</span>
+          <button class="controlSelectButton" @click="$emit('hide-completed')">
+            <span v-if="hideCompleted"><v-icon name="px-checkbox-on" /></span>
+            <span v-else><v-icon name="px-checkbox" /></span>
+          </button>
+        </CDropdownItem>
+        <CDropdownItem href="#">
+          <span @click="$emit('reset-steps')">Reset</span>
+          <button class="controlSelectButton" @click="$emit('reset-steps')">
+            <v-icon name="io-arrow-undo-circle-outline" />
+          </button>
+        </CDropdownItem>
+      </CDropdownMenu>
+    </CDropdown>
+    <CNavItem>
+      <CNavLink href="#">About</CNavLink>
+    </CNavItem>
+  </CNav>
 </template>
 
 <style>
@@ -31,14 +57,7 @@ const props = defineProps(['isDark', 'hideCompleted'])
   display: flex;
   place-items: center;
 }
-.appHeader {
-  position: fixed;
-  top: 10px;
-  left: 20px;
-  /* color: #000; */
-  display: flex;
-  place-items: center;
-}
+
 .controlSelectArea {
   background: none;
   border: none;
