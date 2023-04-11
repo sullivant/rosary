@@ -7,19 +7,24 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CDropdown
+  CDropdown,
+  CButton,
+  CCollapse,
+  CCard,CCardBody
 } from '@coreui/vue'
 
 defineEmits(['mode-change', 'hide-completed', 'reset-steps'])
 const props = defineProps(['isDark', 'hideCompleted'])
+let visible = true;
+function toggleCollapse() {
+  visible = !visible;
+}
+
 </script>
 
 <template>
-  <CNav class="appHeader">
-    <CNavItem>
-      <CNavLink href="#" active>Welcome!</CNavLink>
-    </CNavItem>
-    <CDropdown variant="nav-item">
+  <span class="appHeader">
+    <CDropdown variant="nav-item" dark>
       <CDropdownToggle color="secondary">Setup</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">
@@ -46,10 +51,7 @@ const props = defineProps(['isDark', 'hideCompleted'])
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-    <CNavItem>
-      <CNavLink href="#">About</CNavLink>
-    </CNavItem>
-  </CNav>
+  </span>
 </template>
 
 <style>
