@@ -2,14 +2,19 @@
 import { ref, computed } from 'vue'
 import { version } from '../package.json'
 
-// Dark mode toggling support
+// Dark mode toggling support and other nifty coreui stuff
 import { useDark, useToggle } from '@vueuse/core'
-
 import '@coreui/coreui/dist/css/coreui.min.css'
+
+// Swiper cards
+import { useSwiper, Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCards, Keyboard} from 'swiper'
+import 'swiper/css'
+import 'swiper/css/effect-cards'
 
 import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
-import CardStack from '@/components/cards/CardStack.vue'
+import Step from '@/components/cards/Step.vue'
 
 import {
   fatima,
@@ -22,10 +27,32 @@ import {
 
 let stepId = 0 // ID for each step in the rosary
 
+// Swiper config
+let thisSwiper = ref(null);
+let activeIndex = ref(0);
+const modules = [EffectCards, Keyboard]
+const onSwiper = (swiper: any) => {
+  thisSwiper.value = swiper;
+  console.log(swiper);
+}
+
+function onSlideChange() {
+  console.log('index changed:');
+  activeIndex.value = thisSwiper.value.activeIndex;
+}
+
+function resetSteps() {
+  steps.value.forEach((e) => (e.done = false))
+  thisSwiper.value.setProgress(0, 500);
+}
+
+
+// UI configuration
 const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
 
+// Generation of all cards / steps
 const steps = getSteps()
 function getSteps() {
   return ref([
@@ -61,20 +88,18 @@ function getSteps() {
       prayer: { title: 'End', text: 'Thank you.' },
       cardColor: 'info'
     }
-  ])
+  ]);
 }
 
 const filteredSteps = computed(() => {
   return hideCompleted.value ? steps.value.filter((t) => !t.done) : steps.value
 })
 
-function resetSteps() {
-  steps.value.forEach((e) => (e.done = false))
-}
-
 function toggleHideCompleted() {
   hideCompleted.value = !hideCompleted.value
 }
+
+
 </script>
 
 <template>
@@ -85,10 +110,45 @@ function toggleHideCompleted() {
     :isDark="isDark"
     :hideCompleted="hideCompleted"
   />
+<!-- 
+  <CardStack @index-change="updateCurrentIndex" 
+   :steps="filteredSteps" :isDark="isDark" /> -->
 
-  <CardStack :steps="filteredSteps" :isDark="isDark" />
+   <swiper
+    :rewind="true"
+    :effect="'cards'"
+    :grabCursor="true"
+    :modules="modules"
+    :keyboard="{ enabled: true }"
+    :navigation="true"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
+    class="swiper" id="rosarySwiper" ref="rosarySwiper"
+  >
+    <swiper-slide v-for="step in filteredSteps" @click="step.done = !step.done">
+      <Step :step="step" :key="step.id" :isDark="isDark"></Step>
+    </swiper-slide>
+  </swiper>
 
+
+  <br />
+  Current Prayer: {{ activeIndex + 1 }} / {{ steps.length }}
   <AppFooter :version="version" />
 </template>
 
-<style></style>
+<style>
+.swiper {
+  width: 240px;
+  height: 420px;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  /* font-size: 22px; */
+  font-weight: normal;
+  /* color: #fff; */
+  background-color: rgb(69, 69, 79);
+}
+</style>
