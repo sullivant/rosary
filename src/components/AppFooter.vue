@@ -14,8 +14,7 @@ const props = defineProps(['version'])
   bottom: 20px;
   left: 20px;
   font-size: xx-small;
-  /* color: #000; */
   display: flex;
-  place-items: center;
+  place-items: left;
 }
 </style>
