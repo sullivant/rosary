@@ -11,9 +11,19 @@ import {
   IoArrowUndoCircleOutline,
   PxCheckbox,
   PxCheckboxOn,
-  LaCrossSolid
+  LaCrossSolid,
+  BiInfoCircle,
+  BiInfo
 } from 'oh-vue-icons/icons'
-addIcons(OiSun, OiMoon, IoArrowUndoCircleOutline, PxCheckbox, PxCheckboxOn, LaCrossSolid)
+addIcons(
+  OiSun,
+  OiMoon,
+  IoArrowUndoCircleOutline,
+  PxCheckbox,
+  PxCheckboxOn,
+  LaCrossSolid,
+  BiInfoCircle
+)
 
 const app = createApp(App)
 app.component('v-icon', OhVueIcon)

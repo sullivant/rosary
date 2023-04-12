@@ -60,7 +60,7 @@ function getSteps() {
       done: false,
       prayer: { title: 'End', text: 'Thank you.' },
       cardColor: 'info'
-    },
+    }
   ])
 }
 

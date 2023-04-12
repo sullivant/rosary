@@ -16,28 +16,25 @@ import {
 
 defineEmits(['mode-change', 'hide-completed', 'reset-steps'])
 const props = defineProps(['isDark', 'hideCompleted'])
-let visible = true
-function toggleCollapse() {
-  visible = !visible
-}
+
 </script>
 
 <template>
   <span class="appHeader">
     <CDropdown variant="nav-item">
-      <CDropdownToggle color="secondary">Setup</CDropdownToggle>
+      <CDropdownToggle color="secondary">.rosary</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#" class="dropDownItem">
           <button class="controlButton" @click="$emit('mode-change')">
-            <span v-if="isDark"><v-icon name="oi-sun" class="controlIcon"/></span>
+            <span v-if="isDark"><v-icon name="oi-sun" class="controlIcon" /></span>
             <span v-else><v-icon name="oi-moon" class="controlIcon" /></span>
-          </button>          
+          </button>
           <span v-if="isDark" @click="$emit('mode-change')" class="controlText">Light Mode </span>
           <span v-else @click="$emit('mode-change')" class="controlText">Dark Mode </span>
         </CDropdownItem>
         <CDropdownItem href="#" class="dropDownItem">
           <button class="controlButton" @click="$emit('hide-completed')">
-            <span v-if="hideCompleted"><v-icon name="px-checkbox-on" class="controlIcon"/></span>
+            <span v-if="hideCompleted"><v-icon name="px-checkbox-on" class="controlIcon" /></span>
             <span v-else><v-icon name="px-checkbox" class="controlIcon" /></span>
           </button>
           <span v-if="hideCompleted" @click="$emit('hide-completed')">Show completed </span>
@@ -48,6 +45,10 @@ function toggleCollapse() {
             <v-icon name="io-arrow-undo-circle-outline" class="controlIcon" />
           </button>
           <span @click="$emit('reset-steps')" class="controlText">Reset </span>
+        </CDropdownItem>
+        <CDropdownItem href="#" class="dropDownItem">
+          <v-icon name="bi-info-circle" class="controlIcon" />
+          <span class="controlText">About </span>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
