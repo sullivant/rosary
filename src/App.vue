@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { version } from '../package.json'
 
 // Dark mode toggling support and other nifty coreui stuff
-import { useDark, useToggle, useVibrate } from '@vueuse/core'
+import { useDark, useToggle } from '@vueuse/core'
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 // Swiper cards
@@ -29,8 +29,6 @@ import {
 
 let stepId = 0 // ID for each step in the rosary
 
-const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
-
 
 // Swiper config
 let thisSwiper = ref(Swiper);
@@ -44,7 +42,6 @@ const onSwiper = (swiper: any) => {
 
 function onSlideChange() {
   activeIndex.value = thisSwiper.value.activeIndex;
-  vibrate();
 }
 
 function resetSteps() {
