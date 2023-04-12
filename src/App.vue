@@ -7,7 +7,7 @@ import { useDark, useToggle } from '@vueuse/core'
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 // Swiper cards
-import { useSwiper, Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { EffectCards, Keyboard} from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
@@ -28,16 +28,16 @@ import {
 let stepId = 0 // ID for each step in the rosary
 
 // Swiper config
-let thisSwiper = ref(null);
+let thisSwiper = ref(Swiper);
 let activeIndex = ref(0);
 const modules = [EffectCards, Keyboard]
+
 const onSwiper = (swiper: any) => {
   thisSwiper.value = swiper;
   console.log(swiper);
 }
 
 function onSlideChange() {
-  console.log('index changed:');
   activeIndex.value = thisSwiper.value.activeIndex;
 }
 
@@ -114,7 +114,7 @@ function toggleHideCompleted() {
   <CardStack @index-change="updateCurrentIndex" 
    :steps="filteredSteps" :isDark="isDark" /> -->
 
-   <swiper
+   <Swiper
     :rewind="true"
     :effect="'cards'"
     :grabCursor="true"
@@ -128,7 +128,7 @@ function toggleHideCompleted() {
     <swiper-slide v-for="step in filteredSteps" @click="step.done = !step.done">
       <Step :step="step" :key="step.id" :isDark="isDark"></Step>
     </swiper-slide>
-  </swiper>
+  </Swiper>
 
 
   <br />
