@@ -26,35 +26,43 @@ const isDark = useDark({ selector: 'body' })
 const toggleDark = useToggle(isDark)
 const hideCompleted = ref(false)
 
-//TODO: Replace this with a function...
-const steps = ref([
-  { id: stepId++, done: false, prayer: introduction },
-  { id: stepId++, done: false, prayer: creed, icon: 'la-cross-solid' },
-  { id: stepId++, done: false, prayer: ourfather },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: glory },
-  {
-    id: stepId++,
-    done: false,
-    prayer: { title: 'First Decade', text: '(Mystery here)' },
-    cardColor: 'info'
-  },
-  { id: stepId++, done: false, prayer: ourfather },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: hailmary },
-  { id: stepId++, done: false, prayer: glory },
-  { id: stepId++, done: false, prayer: fatima }
-])
+const steps = getSteps()
+function getSteps() {
+  return ref([
+    { id: stepId++, done: false, prayer: introduction },
+    { id: stepId++, done: false, prayer: creed, icon: 'la-cross-solid' },
+    { id: stepId++, done: false, prayer: ourfather },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: glory },
+    {
+      id: stepId++,
+      done: false,
+      prayer: { title: 'First Decade', text: '(Mystery here)' },
+      cardColor: 'info'
+    },
+    { id: stepId++, done: false, prayer: ourfather },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: hailmary },
+    { id: stepId++, done: false, prayer: glory },
+    { id: stepId++, done: false, prayer: fatima },
+    {
+      id: stepId++,
+      done: false,
+      prayer: { title: 'End', text: 'Thank you.' },
+      cardColor: 'info'
+    },
+  ])
+}
 
 const filteredSteps = computed(() => {
   return hideCompleted.value ? steps.value.filter((t) => !t.done) : steps.value
@@ -80,11 +88,7 @@ function toggleHideCompleted() {
 
   <CardStack :steps="filteredSteps" :isDark="isDark" />
 
-  <br />
-
   <AppFooter :version="version" />
 </template>
 
-<style>
-
-</style>
+<style></style>

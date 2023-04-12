@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import Step from '@/components/cards/Step.vue'
 
 // Swiper cards
-import { useSwiper, Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { EffectCards, Scrollbar } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
@@ -11,6 +11,10 @@ import 'swiper/css/scrollbar'
 
 const props = defineProps(['steps', 'isDark'])
 const modules = [EffectCards, Scrollbar]
+
+const onSlideChange = (swiper: any): void => {
+  console.log(swiper)
+}
 </script>
 
 <template>
@@ -20,6 +24,7 @@ const modules = [EffectCards, Scrollbar]
     :grabCursor="true"
     :modules="modules"
     :scrollbar="{ hide: true }"
+    @slideChange="onSlideChange"
     class="swiper"
   >
     <swiper-slide v-for="step in steps" @click="step.done = !step.done">

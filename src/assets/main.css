@@ -25,7 +25,7 @@ body {
   height: 100vh;
   font-family: IBM Plex Mono, monospace;
 }
-
+/* 
 button {
   background: none;
   border: none;
@@ -36,4 +36,4 @@ button {
   border-radius: 5px;
   font-size: xx-small;
   margin: 1px;
-}
+} */
