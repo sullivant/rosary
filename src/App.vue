@@ -12,6 +12,8 @@ import { EffectCards, Keyboard} from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 
+import { CProgress, CProgressBar } from '@coreui/vue'
+
 import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import Step from '@/components/cards/Step.vue'
@@ -34,7 +36,7 @@ const modules = [EffectCards, Keyboard]
 
 const onSwiper = (swiper: any) => {
   thisSwiper.value = swiper;
-  console.log(swiper);
+  // console.log(swiper);
 }
 
 function onSlideChange() {
@@ -45,7 +47,6 @@ function resetSteps() {
   steps.value.forEach((e) => (e.done = false))
   thisSwiper.value.setProgress(0, 500);
 }
-
 
 // UI configuration
 const isDark = useDark({ selector: 'body' })
@@ -99,6 +100,10 @@ function toggleHideCompleted() {
   hideCompleted.value = !hideCompleted.value
 }
 
+const getProgress = computed(() => {
+  return ((activeIndex.value + 1) /  steps.value.length) * 100;
+})
+
 
 </script>
 
@@ -129,10 +134,13 @@ function toggleHideCompleted() {
       <Step :step="step" :key="step.id" :isDark="isDark"></Step>
     </swiper-slide>
   </Swiper>
-
-
   <br />
-  Current Prayer: {{ activeIndex + 1 }} / {{ steps.length }}
+  <CProgress class="mb-2">
+    <CProgressBar :value="getProgress" color="success" animated variant="striped" />
+  </CProgress>
+
+  <!-- <br />
+  Current Prayer: {{ activeIndex + 1 }} / {{ steps.length }} -->
   <AppFooter :version="version" />
 </template>
 
