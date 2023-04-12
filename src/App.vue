@@ -86,12 +86,5 @@ function toggleHideCompleted() {
 </template>
 
 <style>
-.appHeader {
-  position: fixed;
-  top: 10px;
-  left: 20px;
-  /* color: #000; */
-  display: flex;
-  place-items: center;
-}
+
 </style>
