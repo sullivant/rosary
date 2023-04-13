@@ -8,7 +8,7 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 
 // Swiper cards
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { EffectCards, Keyboard} from 'swiper'
+import { EffectCards, Keyboard } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 
@@ -29,24 +29,23 @@ import {
 
 let stepId = 0 // ID for each step in the rosary
 
-
 // Swiper config
-let thisSwiper = ref(Swiper);
-let activeIndex = ref(0);
+let thisSwiper = ref(Swiper)
+let activeIndex = ref(0)
 const modules = [EffectCards, Keyboard]
 
 const onSwiper = (swiper: any) => {
-  thisSwiper.value = swiper;
+  thisSwiper.value = swiper
   // console.log(swiper);
 }
 
 function onSlideChange() {
-  activeIndex.value = thisSwiper.value.activeIndex;
+  activeIndex.value = thisSwiper.value.activeIndex
 }
 
 function resetSteps() {
   steps.value.forEach((e) => (e.done = false))
-  thisSwiper.value.setProgress(0, 500);
+  thisSwiper.value.setProgress(0, 500)
 }
 
 // UI configuration
@@ -90,7 +89,7 @@ function getSteps() {
       prayer: { title: 'End', text: 'Thank you.' },
       cardColor: 'info'
     }
-  ]);
+  ])
 }
 
 // Utility functions and computeds
@@ -102,11 +101,20 @@ function toggleHideCompleted() {
   hideCompleted.value = !hideCompleted.value
 }
 
+// Calculates the progress bar's value as the combination of filtered steps
+// and the active index, over the overall length of the steps array.
 const getProgress = computed(() => {
-  return ((activeIndex.value + 1) /  steps.value.length) * 100;
+  // console.log('active index:' + activeIndex.value)
+  // console.log('steps length:' + steps.value.length)
+  // console.log('filteredSteps length:' + filteredSteps.value.length)
+
+  let numerator: number = steps.value.length - filteredSteps.value.length + activeIndex.value + 1
+  // console.log('numerator:' + numerator)
+  // console.log('denom:' + steps.value.length)
+
+  return (numerator / steps.value.length) * 100
+  // return ((activeIndex.value + 1) / filteredSteps.value.length) * 100
 })
-
-
 </script>
 
 <template>
@@ -117,11 +125,11 @@ const getProgress = computed(() => {
     :isDark="isDark"
     :hideCompleted="hideCompleted"
   />
-<!-- 
+  <!-- 
   <CardStack @index-change="updateCurrentIndex" 
    :steps="filteredSteps" :isDark="isDark" /> -->
 
-   <Swiper
+  <Swiper
     :rewind="true"
     :effect="'cards'"
     :grabCursor="true"
@@ -130,7 +138,9 @@ const getProgress = computed(() => {
     :navigation="true"
     @swiper="onSwiper"
     @slideChange="onSlideChange"
-    class="swiper" id="rosarySwiper" ref="rosarySwiper"
+    class="swiper"
+    id="rosarySwiper"
+    ref="rosarySwiper"
   >
     <swiper-slide v-for="step in filteredSteps" @click="step.done = !step.done">
       <Step :step="step" :key="step.id" :isDark="isDark"></Step>

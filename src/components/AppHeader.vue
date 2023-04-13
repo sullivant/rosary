@@ -16,7 +16,6 @@ import {
 
 defineEmits(['mode-change', 'hide-completed', 'reset-steps'])
 const props = defineProps(['isDark', 'hideCompleted'])
-
 </script>
 
 <template>
