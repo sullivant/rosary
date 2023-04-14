@@ -1,25 +1,27 @@
 # rosary
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple, self-hostable application designed to help you [pray the Rosary](https://www.usccb.org/how-to-pray-the-rosary).
 
-## Recommended IDE Setup
+Like a lot of folks:
+- I want to do more in prayer.  
+- I write software for a living.  
+- I wanted to do some front-end tinkering.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+TypeScript + VueJS + Vite seemed like a logical place to start. 
 
-## Type Support for `.vue` Imports in TS
+## The General Idea
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+The general idea here is that when I visit this page it should have a pre-prepped Rosary setup, with the current Mysteries in the right spots for proper contemplation.  
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Each time I finish a prayer I wanted to simply swipe to the next card in the stack, showing progress as I go along or as a reminder in case I have forgotten a prayer or what comes next, etc.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+This, in no way, is better than carrying beads with you - but, see the list above.  
 
-## Customize configuration
+## This is Open Source
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The license is GNU GPLv3.0 - do with this what you will.  Contribute a Pull Request, fork and improve, fork and laugh... but at least keep those of us trying to pray more in your own prayers, ok?
+
+# Running or Developing
 
 ## Project Setup
 
