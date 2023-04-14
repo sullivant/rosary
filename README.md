@@ -17,6 +17,8 @@ Each time I finish a prayer I wanted to simply swipe to the next card in the sta
 
 This, in no way, is better than carrying beads with you - but, see the list above.  
 
+![screenshot of the basic app](/public/screenshot.png)
+
 ## This is Open Source
 
 The license is GNU GPLv3.0 - do with this what you will.  Contribute a Pull Request, fork and improve, fork and laugh... but at least keep those of us trying to pray more in your own prayers, ok?
